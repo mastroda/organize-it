@@ -14,6 +14,11 @@ export class UtilsService {
   ) { }
 
 
+  /**
+   * 
+   * @param options 
+   * @returns  Ritorna una Promise che si risolve alla chiusura del toast
+   */
   async apriToast(options: ToastOptions) {
     if (!options.duration) {
       options.duration = 4000;
@@ -22,6 +27,11 @@ export class UtilsService {
     await t.present();
   }
 
+  /**
+   * 
+   * @param options 
+   * @returns  Ritorna una Promise che si risolve alla chiusura dell'alert
+   */
   async apriAlert(options: AlertOptions) {
     if (!options.buttons) {
       options.buttons = [{ text: 'Ok' }]
@@ -33,19 +43,33 @@ export class UtilsService {
     return await a.onWillDismiss();
   }
 
+  /**
+   * 
+   * @param options 
+   * @returns  Ritorna una Promise che si risolve alla chiusura del popover
+   */
   async apriPopover(options: PopoverOptions) {
     const a = await this.popoverController.create(options);
     await a.present();
     return await a.onWillDismiss();
   }
 
+  /**
+   * 
+   * @param options
+   * @returns Ritorna una Promise che si risolve alla chiusura del modale
+   */
   async apriModal(options: ModalOptions) {
     const m = await this.modalController.create(options);
     await m.present();
     return await m.onWillDismiss();
   }
 
-
+/**
+ * Genera una stringa alfanumerica random 
+ * @param length Lunghezza della stringa da generare
+ * @returns Stringa casuale alfanumerica
+ */
   getRandomString(length: number) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

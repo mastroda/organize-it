@@ -89,7 +89,7 @@ export class Store {
     getToDos() {
         return this.store.pipe(map(s => s?.todos));
     }
-    setToDo(value: ToDo[]): void {
+    setToDos(value: ToDo[]): void {
         this.set('todos', value);
     }
 }

@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { CardTodoComponent } from './components/card-todo/card-todo.component';
 import { StatoTodoPipe } from './pipes/stato-todo.pipe';
 import { TodosComponent } from './routes/todos/todos.component';
+import { ModalTodoComponent } from './components/modal-todo/modal-todo.component';
+import { FormTodoComponent } from './components/form-todo/form-todo.component';
 
 
 @NgModule({
@@ -27,6 +29,8 @@ import { TodosComponent } from './routes/todos/todos.component';
 
     // componenti
     CardTodoComponent,
+    ModalTodoComponent,
+    FormTodoComponent,
 
     // pipes
     StatoTodoPipe,

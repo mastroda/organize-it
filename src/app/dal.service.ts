@@ -92,25 +92,74 @@ export class DalService {
     );
   }
 
-
+  /**
+   * Carica la lista delle ToDo dal webservice ed aggiorna lo stato dell'applicazione
+   * @returns 
+   */
   caricaToDos() {
     return this.get<ToDo[]>('todos').pipe(tap(
       res => {
-        this.store.setToDo(res.data || []);
+        this.store.setToDos(res.data || []);
       }
     ));
   }
 
+  /**
+   * Salva la ToDo tramite il webservice ed aggiorna lo stato dell'applicazione
+   * @returns 
+   */
   salvaToDo(todo: ToDo) {
     if (todo.id) {
       return this.put<null>(`todos/${todo.id}`, todo);
     } else {
       todo.id = this.utils.getRandomString(6);
     }
-    return this.post<null>('todos', todo);
+    return this.post<null>('todos', todo).pipe(tap(
+      res => {
+        // se la chiamata va a buon fine
+        if (res.isOk) {
+
+          // clono la lista delle todos dello store
+          const todos = [...this.store.value.todos];
+
+          // cerco se è presente la todo nella lista todos dello store
+          const i = todos.findIndex(t => t.id === todo.id);
+
+          if (i >= 0) {
+            // se presente aggiorno il record
+            todos[i] = todo;
+          } else {
+            // altrimenti lo aggiungo
+            todos.push(todo);
+          }
+
+          // aggiorno lo store con la nuova lista che include/aggiorna la nuova ToDo
+          // così da non dover richiamare la funzione di caricamento lista delle ToDo con una nuova chiamata al webservice
+          this.store.setToDos(todos);
+        }
+      }
+    ));
   }
 
+
+  /**
+   * Elimina la ToDo tramite il webservice ed aggiorna lo stato dell'applicazione
+   * @returns 
+   */
   eliminaToDo(id: string) {
-    return this.delete<null>(`todos/${id}`);
+    return this.delete<null>(`todos/${id}`).pipe(tap(
+      res => {
+        // se la chiamata va a buon fine
+        if (res.isOk) {
+
+          // clono la lista delle todos dello store
+          const todos = this.store.value.todos.filter(t => t.id !== id);
+
+          // aggiorno lo store con la nuova lista che esclude la nuova ToDo
+          // così da non dover richiamare la funzione di caricamento lista delle ToDo con una nuova chiamata al webservice
+          this.store.setToDos(todos);
+        }
+      }
+    ));
   }
 }

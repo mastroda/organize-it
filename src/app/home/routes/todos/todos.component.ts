@@ -3,6 +3,7 @@ import { lastValueFrom } from 'rxjs';
 import { DalService } from 'src/app/dal.service';
 import { ToDo } from 'src/app/models';
 import { UtilsService } from 'src/app/utils.service';
+import { ModalTodoComponent } from '../../components/modal-todo/modal-todo.component';
 
 @Component({
   selector: 'app-todos',
@@ -20,7 +21,7 @@ export class TodosComponent implements OnInit {
     public utils: UtilsService,
   ) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.carica();
   }
 
@@ -41,9 +42,12 @@ export class TodosComponent implements OnInit {
       titolo: 'titolo',
       dataCreazione: new Date(),
     };
-    const res = await lastValueFrom(this.dal.salvaToDo(nuova));
-    console.log(res);
 
-    await this.carica();
+    await this.utils.apriModal({
+      component: ModalTodoComponent,
+      componentProps: {
+        toDo: nuova
+      }
+    });
   }
 }

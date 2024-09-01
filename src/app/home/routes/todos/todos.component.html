@@ -1,13 +1,15 @@
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-menu-button></ion-menu-button>
-  </ion-buttons>  <ion-title>Lista ToDo</ion-title>
+  </ion-buttons> <ion-title>Lista ToDo</ion-title>
 
 </ion-toolbar>
 
 <ion-content class="ion-padding">
 
-
+  <div class="flex ion-justify-content-end">
+    <ion-button (click)="aggiungi()">Nuova</ion-button>
+  </div>
 
   @for(item of todos$|async; track item.id) {
   <app-card-todo [todo]="item"></app-card-todo>
