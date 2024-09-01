@@ -10,13 +10,16 @@
   </ion-title>
 
   <ion-buttons slot="end">
+
+    @if(toDoEditabile.id) {
     <ion-button (click)="elimina()" [disabled]="readonly" color="danger">
       Elimina
       @if(readonly){
       <ion-spinner name="crescent" class="button-loading"></ion-spinner>
       }
     </ion-button>
-    
+    }
+
     <ion-button (click)="salva()" [disabled]="readonly">
       Salva
       @if(readonly){

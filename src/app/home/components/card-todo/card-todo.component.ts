@@ -15,7 +15,6 @@ export class CardTodoComponent implements OnInit {
   @Input() todo!: ToDo;
 
   constructor(
-    private dal: DalService,
     private utils: UtilsService,
   ) { }
 
@@ -31,15 +30,4 @@ export class CardTodoComponent implements OnInit {
     });
   }
 
-  async salva() {
-    this.todo.descrizione += ` [${this.utils.getRandomString(2)}]`;
-    await lastValueFrom(this.dal.salvaToDo(this.todo));
-    await lastValueFrom(this.dal.caricaToDos());
   }
-
-
-  async elimina() {
-    await lastValueFrom(this.dal.eliminaToDo(this.todo.id));
-    await lastValueFrom(this.dal.caricaToDos());
-  }
-}

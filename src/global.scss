@@ -37,12 +37,24 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 
 
+.flex {
+    display: flex;
+}
 
+ion-button {
+    text-transform: none;
+}
 
 @media only screen and (min-width: 768px) {
     ion-modal {
         --border-radius: 1rem;
     }
+}
+
+
+
+ion-card {
+    border-radius: 1rem;
 }
 
 
