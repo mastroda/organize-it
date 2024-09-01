@@ -71,20 +71,20 @@ export class ModalTodoComponent implements OnInit {
     }
 
     this.readonly = true;
-    const res = await lastValueFrom(this.dal.salvaToDo(this.toDo));
+    const res = await lastValueFrom(this.dal.eliminaToDo(this.toDo.id));
     this.readonly = false;
 
     if (!res.isOk) {
       await this.utils.apriAlert({
         header: 'Errore',
-        subHeader: 'Salvataggio ToDo',
+        subHeader: 'Eliminazione ToDo',
         message: res.errore,
       });
       return;
     }
 
     await this.utils.apriToast({
-      message: 'ToDo salvata!',
+      message: 'ToDo eliminata!',
       color: 'success',
     })
   }

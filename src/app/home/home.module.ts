@@ -10,6 +10,8 @@ import { StatoTodoPipe } from './pipes/stato-todo.pipe';
 import { TodosComponent } from './routes/todos/todos.component';
 import { ModalTodoComponent } from './components/modal-todo/modal-todo.component';
 import { FormTodoComponent } from './components/form-todo/form-todo.component';
+import { DashboardComponent } from './routes/dashboard/dashboard.component';
+import { AboutComponent } from './routes/about/about.component';
 
 
 @NgModule({
@@ -26,6 +28,8 @@ import { FormTodoComponent } from './components/form-todo/form-todo.component';
 
     // sotto pagine
     TodosComponent,
+    DashboardComponent,
+    AboutComponent,
 
     // componenti
     CardTodoComponent,
