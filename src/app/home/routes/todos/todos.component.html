@@ -11,11 +11,36 @@
     <ion-button (click)="aggiungi()">Nuova</ion-button>
   </div>
 
-  @if(isLoading$ | async){
-    in caricamento
+  @if(todosByStato$ | async; as stati){
+  <ion-grid>
+    <ion-row>
+      @for(item of stati; track item.id) {
+      <ion-col>
+        <div class="ion-padding">
+          <h3 class="ion-no-margin">{{item.descrizione}}</h3>
+        </div>
+
+
+
+        @if (isLoading$ | async){
+        @for(x of [].constructor(4); track x) {
+        <div style="margin: 10px;" @fadeAnimation>
+          <ion-skeleton-text [style.height]="(item.id+$index)%2 === 0 ? '8rem' : '10rem'"
+            [animated]="true"></ion-skeleton-text>
+        </div>
+        }
+        } @else {
+        @for(todo of item.todos; track todo.id) {
+        <app-card-todo [todo]="todo" @fadeAnimation></app-card-todo>
+        } @empty {
+        <div class="ion-padding" @fadeAnimation>
+          Lista vuota
+        </div>
+        }}
+      </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
   }
 
-  @for(item of todos$ | async; track item.id) {
-  <app-card-todo [todo]="item"></app-card-todo>
-  }
 </ion-content>

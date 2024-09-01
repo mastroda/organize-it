@@ -73,7 +73,7 @@ export class UtilsService {
 
   /**
    * Genera una stringa alfanumerica random 
-   * @param length Lunghezza della stringa da generare
+   * @param length
    * @returns Stringa casuale alfanumerica
    */
   getRandomString(length: number) {

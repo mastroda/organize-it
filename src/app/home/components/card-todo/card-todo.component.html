@@ -1,25 +1,24 @@
 @if (todo) {
-<ion-card>
+<ion-card [color]="todo.idStato | statoTodo : 'colore' | async" button (click)="apri()">
 
   <ion-card-header>
-    
+
     <div class="flex ion-justify-content-between">
       <ion-card-subtitle class="ion-text-uppercase">
         {{todo.idStato | statoTodo | async}}
       </ion-card-subtitle>
 
-      <ion-button size="small" fill="clear" class="ion-no-margin" (click)="apri()">
-        Apri
-        <ion-icon name="open-outline" slot="end"></ion-icon>
-      </ion-button>
+      <ion-icon class="icona-modifica" name="open-outline"></ion-icon>
     </div>
-    
-    
+
+
     <ion-card-title>{{todo.titolo}}</ion-card-title>
   </ion-card-header>
+  @if(todo.descrizione){
   <ion-card-content>
     {{todo.descrizione}}
   </ion-card-content>
+  }
 </ion-card>
 } @else {
 <ion-card>

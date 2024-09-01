@@ -29,12 +29,12 @@ export interface State {
 }
 
 const statoIniziale: State = {
-    fakeDelay: 1500,
+    fakeDelay: 2500,
 
     stati: [
-        { id: 1, descrizione: 'In attesa' },
-        { id: 2, descrizione: 'In progresso' },
-        { id: 3, descrizione: 'Completato' },
+        { id: 1, descrizione: 'In attesa', colore: 'todo' },
+        { id: 2, descrizione: 'In corso', colore: 'progress' },
+        { id: 3, descrizione: 'Completato', colore: 'done' },
     ],
     todos: [],
     todosCaricate: false,

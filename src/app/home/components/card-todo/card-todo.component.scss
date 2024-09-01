@@ -1,3 +1,17 @@
-ion-card-title{
+ion-card-title {
     font-weight: 600;
+}
+
+
+ion-card {
+    .icona-modifica {
+        font-size: 16px;
+        display: none;
+    }
+
+    &:hover {
+        .icona-modifica {
+            display: initial;
+        }
+    }
 }

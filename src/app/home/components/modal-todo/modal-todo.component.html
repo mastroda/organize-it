@@ -6,15 +6,15 @@
   </ion-buttons>
 
   <ion-title>
-    {{toDoEditabile.id ? 'Dettagli' : 'Nuova'}} ToDo
+    {{toDo.id ? 'Dettagli' : 'Nuova'}} ToDo
   </ion-title>
 
   <ion-buttons slot="end">
 
-    @if(toDoEditabile.id) {
+    @if(toDo.id) {
     <ion-button (click)="elimina()" [disabled]="readonly" color="danger">
       Elimina
-      @if(readonly){
+      @if(inEliminazione){
       <ion-spinner name="crescent" class="button-loading"></ion-spinner>
       }
     </ion-button>
@@ -22,7 +22,7 @@
 
     <ion-button (click)="salva()" [disabled]="readonly">
       Salva
-      @if(readonly){
+      @if(inSalvataggio){
       <ion-spinner name="crescent" class="button-loading"></ion-spinner>
       }
     </ion-button>

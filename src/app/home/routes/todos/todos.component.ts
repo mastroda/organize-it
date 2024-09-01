@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom, map } from 'rxjs';
+import { lastValueFrom, map, merge, mergeMap } from 'rxjs';
 import { DalService } from 'src/app/dal.service';
 import { ToDo } from 'src/app/models';
 import { UtilsService } from 'src/app/utils.service';
 import { ModalTodoComponent } from '../../components/modal-todo/modal-todo.component';
+import { fadeAnimation } from 'src/app/animations';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
+  animations: [fadeAnimation]
 })
 export class TodosComponent implements OnInit {
 
@@ -25,6 +27,24 @@ export class TodosComponent implements OnInit {
 
   get isLoading$() {
     return this.dal.isLoadingTodos$;
+  }
+
+  get todosByStato$() {
+    return this.dal.statiToDo$.pipe(
+      mergeMap(stati => {
+        return this.dal.todos$.pipe(map(
+          todos => {
+            if (!stati) {
+              return [];
+            }
+            return stati.map(s => ({
+              ...s,
+              todos: todos.filter(t => t.idStato === s.id)
+            }))
+          }
+        ));
+      })
+    );
   }
 
   constructor(

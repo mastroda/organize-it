@@ -1,2 +1,51 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+:root {
+    --ion-color-todo: #eeeeee;
+    --ion-color-todo-rgb: 238, 238, 238;
+    --ion-color-todo-contrast: #000000;
+    --ion-color-todo-contrast-rgb: 0, 0, 0;
+    --ion-color-todo-shade: #d1d1d1;
+    --ion-color-todo-tint: #f0f0f0;
+
+    --ion-color-progress: #f8edc8;
+    --ion-color-progress-rgb: 248, 237, 200;
+    --ion-color-progress-contrast: #000000;
+    --ion-color-progress-contrast-rgb: 0, 0, 0;
+    --ion-color-progress-shade: #dad1b0;
+    --ion-color-progress-tint: #f9efce;
+    --ion-color-done: #c8f8cd;
+
+    --ion-color-done-rgb: 200, 248, 205;
+    --ion-color-done-contrast: #000000;
+    --ion-color-done-contrast-rgb: 0, 0, 0;
+    --ion-color-done-shade: #b0dab4;
+    --ion-color-done-tint: #cef9d2;
+}
+
+.ion-color-todo {
+    --ion-color-base: var(--ion-color-todo);
+    --ion-color-base-rgb: var(--ion-color-todo-rgb);
+    --ion-color-contrast: var(--ion-color-todo-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-todo-contrast-rgb);
+    --ion-color-shade: var(--ion-color-todo-shade);
+    --ion-color-tint: var(--ion-color-todo-tint);
+}
+
+.ion-color-progress {
+    --ion-color-base: var(--ion-color-progress);
+    --ion-color-base-rgb: var(--ion-color-progress-rgb);
+    --ion-color-contrast: var(--ion-color-progress-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-progress-contrast-rgb);
+    --ion-color-shade: var(--ion-color-progress-shade);
+    --ion-color-tint: var(--ion-color-progress-tint);
+}
+
+.ion-color-done {
+    --ion-color-base: var(--ion-color-done);
+    --ion-color-base-rgb: var(--ion-color-done-rgb);
+    --ion-color-contrast: var(--ion-color-done-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-done-contrast-rgb);
+    --ion-color-shade: var(--ion-color-done-shade);
+    --ion-color-tint: var(--ion-color-done-tint);
+}

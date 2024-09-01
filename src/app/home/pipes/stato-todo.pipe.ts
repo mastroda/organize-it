@@ -19,7 +19,14 @@ export class StatoTodoPipe implements PipeTransform {
     }
     return this.dal.statiToDo$.pipe(map(stati => {
       if (!stati) { return 'Stati non trovati'; }
-      return stati.find(c => c.id === value)?.descrizione || 'Stato non trovato';
+      const s = stati.find(c => c.id === value);
+      if (args && args.length > 0) {
+        if (args[0] === 'colore') {
+          return s?.colore || 'Stato non trovato';
+        }
+      }
+
+      return s?.descrizione || 'Stato non trovato';
     }));
   }
 }

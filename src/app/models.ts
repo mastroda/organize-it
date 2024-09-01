@@ -10,6 +10,7 @@ export interface ToDo {
 export interface StatoToDo {
     id: number;
     descrizione: string;
+    colore: string;
 }
 
 

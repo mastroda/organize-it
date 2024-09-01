@@ -46,7 +46,7 @@ export class DalService {
   /**
    * Effettua la chiamata http get su basato su `WEB_SERVICE_URL`
    * @param funzione sezione della url da concatenare a `WEB_SERVICE_URL`
-   * @returns Ritorna un'istanza di `RisultatoOperazione`
+   * @returns 
    */
   private get<T>(funzione: string): Observable<RisultatoOperazione<T>> {
     return this.http.get(WEB_SERVICE_URL + funzione, this.defaultHeaders).pipe(
@@ -59,7 +59,7 @@ export class DalService {
   /**
    * Effettua la chiamata http get su basato su `WEB_SERVICE_URL`
    * @param funzione sezione della url da concatenare a `WEB_SERVICE_URL`
-   * @returns Ritorna un'istanza di `RisultatoOperazione`
+   * @returns 
    */
   private post<T>(funzione: string, payload: any): Observable<RisultatoOperazione<T>> {
     return this.http.post(WEB_SERVICE_URL + funzione, payload, this.defaultHeaders).pipe(
@@ -72,7 +72,7 @@ export class DalService {
   /**
    * Effettua la chiamata http get su basato su `WEB_SERVICE_URL`
    * @param funzione sezione della url da concatenare a `WEB_SERVICE_URL`
-   * @returns Ritorna un'istanza di `RisultatoOperazione`
+   * @returns 
    */
   private put<T>(funzione: string, payload: any): Observable<RisultatoOperazione<T>> {
     return this.http.put(WEB_SERVICE_URL + funzione, payload, this.defaultHeaders).pipe(
@@ -85,7 +85,7 @@ export class DalService {
   /**
    * Effettua la chiamata http get su basato su `WEB_SERVICE_URL`
    * @param funzione sezione della url da concatenare a `WEB_SERVICE_URL`
-   * @returns Ritorna un'istanza di `RisultatoOperazione`
+   * @returns 
    */
   private delete<T>(funzione: string): Observable<RisultatoOperazione<T>> {
     return this.http.delete(WEB_SERVICE_URL + funzione, this.defaultHeaders).pipe(
@@ -113,16 +113,18 @@ export class DalService {
    * @returns 
    */
   salvaToDo(todo: ToDo) {
+    let chiamata = undefined;
     if (todo.id) {
-      return this.put<null>(`todos/${todo.id}`, todo);
+      chiamata = this.put<null>(`todos/${todo.id}`, todo);
     } else {
       todo.id = this.utils.getRandomString(6);
+    chiamata = this.post<null>('todos', todo);
     }
-    return this.post<null>('todos', todo).pipe(tap(
+
+    return chiamata.pipe(tap(
       res => {
         // se la chiamata va a buon fine
         if (res.isOk) {
-
           // clono la lista delle todos dello store
           const todos = [...this.store.value.todos];
 

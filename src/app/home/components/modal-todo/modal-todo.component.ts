@@ -16,6 +16,8 @@ export class ModalTodoComponent implements OnInit {
   toDoEditabile!: ToDo;
 
   readonly = false;
+  inSalvataggio = false;
+  inEliminazione = false;
 
   constructor(
     private modalController: ModalController,
@@ -36,7 +38,11 @@ export class ModalTodoComponent implements OnInit {
 
   async salva() {
     this.readonly = true;
-    const res = await lastValueFrom(this.dal.salvaToDo(this.toDo));
+    this.inSalvataggio = true;
+
+    const res = await lastValueFrom(this.dal.salvaToDo(this.toDoEditabile));
+
+    this.inSalvataggio = false;
     this.readonly = false;
 
     if (!res.isOk) {
@@ -51,7 +57,9 @@ export class ModalTodoComponent implements OnInit {
     await this.utils.apriToast({
       message: 'ToDo salvata!',
       color: 'success',
-    })
+    });
+
+    this.modalController.dismiss();
   }
 
 
@@ -63,7 +71,7 @@ export class ModalTodoComponent implements OnInit {
       message: 'Sicuro di voler eliminare questa ToDo?',
       buttons: [
         { text: 'Annulla', role: 'cancel' },
-        { text: 'Si, elimina', role: 'ok' }
+        { text: 'Conferma', role: 'ok' }
       ]
     });
     if (resAlert.role !== 'ok') {
@@ -71,7 +79,10 @@ export class ModalTodoComponent implements OnInit {
     }
 
     this.readonly = true;
+    this.inEliminazione = true;
+
     const res = await lastValueFrom(this.dal.eliminaToDo(this.toDo.id));
+    this.inEliminazione = false;
     this.readonly = false;
 
     if (!res.isOk) {
@@ -83,9 +94,11 @@ export class ModalTodoComponent implements OnInit {
       return;
     }
 
-    await this.utils.apriToast({
+    this.utils.apriToast({
       message: 'ToDo eliminata!',
       color: 'success',
-    })
+    });
+
+    this.modalController.dismiss();
   }
 }
