@@ -1,0 +1,30 @@
+ion-split-pane {
+  --side-max-width: 0;
+  --side-min-width: 18rem;
+
+  & ion-menu {
+    --border: none;
+  }
+}
+
+.logo {
+  max-width: 12rem;
+  margin: auto;
+}
+
+
+.menu-item {
+  --border-radius: 0.4rem;
+  --border-style: none;
+  margin-bottom: .4rem;
+--min-height: 0;
+  & ion-label {
+    font-size: 14px;
+  }
+& ion-icon {
+  margin: 0.4rem 1.5rem 0.4rem 0;
+}
+  &.attivo {
+    --background: var(--ion-color-light);
+  }
+}

@@ -1,0 +1,25 @@
+<ion-split-pane when="md" contentId="main">
+  <ion-menu contentId="main" #menu>
+
+    <ion-content class="ion-padding">
+      <div class="ion-padding">
+        <ion-img src="assets/icon/logo.png" class="logo"></ion-img>
+      </div>
+
+      <div class="ion-padding">
+        @for(item of menuItems; track item.label) {
+        <ion-item class="menu-item" [routerLink]="[item.link]" routerLinkActive="attivo" (click)="menu.close()">
+          <ion-label>
+            {{item.label}}
+          </ion-label>
+          <ion-icon [name]="item.icon+'-outline'" slot="start"></ion-icon>
+        </ion-item>
+        }
+      </div>
+    </ion-content>
+
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+
+</ion-split-pane>
