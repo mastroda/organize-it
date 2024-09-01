@@ -20,6 +20,9 @@ export class DalService {
     return this.store.getToDos();
   }
 
+  get isLoadingTodos$() {
+    return this.store.getTodosCaricate().pipe(map(stato => !stato));
+  }
 
 
 
@@ -100,6 +103,7 @@ export class DalService {
     return this.get<ToDo[]>('todos').pipe(tap(
       res => {
         this.store.setToDos(res.data || []);
+        this.store.setTodosCaricate(true);
       }
     ));
   }

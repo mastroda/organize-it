@@ -11,7 +11,11 @@
     <ion-button (click)="aggiungi()">Nuova</ion-button>
   </div>
 
-  @for(item of todos$|async; track item.id) {
+  @if(isLoading$ | async){
+    in caricamento
+  }
+
+  @for(item of todos$ | async; track item.id) {
   <app-card-todo [todo]="item"></app-card-todo>
   }
 </ion-content>

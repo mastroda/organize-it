@@ -8,7 +8,7 @@
   <ion-card-content>
     {{todo.descrizione}}
   </ion-card-content>
-
+<ion-button (click)="apri()">apri</ion-button>
   <ion-button (click)="salva()">salva</ion-button>
   @if (todo.id) {
   <ion-button color="danger" (click)="elimina()">elimina</ion-button>

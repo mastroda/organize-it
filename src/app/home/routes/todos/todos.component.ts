@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, map } from 'rxjs';
 import { DalService } from 'src/app/dal.service';
 import { ToDo } from 'src/app/models';
 import { UtilsService } from 'src/app/utils.service';
@@ -16,30 +16,25 @@ export class TodosComponent implements OnInit {
     return this.dal.todos$;
   }
 
+  get isLoading$() {
+    return this.dal.isLoadingTodos$;
+  }
+
   constructor(
     public dal: DalService,
     public utils: UtilsService,
   ) { }
 
-  ngOnInit() {
-    this.carica();
-  }
+  ngOnInit() { }
 
-
-  async carica() {
-
-    const res = await lastValueFrom(this.dal.caricaToDos());
-    console.log(res);
-
-  }
 
 
   async aggiungi() {
     const nuova: ToDo = {
-      descrizione: 'nuova',
+      descrizione: '',
       id: '',
       idStato: 1,
-      titolo: 'titolo',
+      titolo: '',
       dataCreazione: new Date(),
     };
 

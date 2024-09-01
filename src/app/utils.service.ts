@@ -17,11 +17,16 @@ export class UtilsService {
   /**
    * 
    * @param options 
+   * @default options.duration = 4000ms
+   * @default options.position = 'bottom'
    * @returns  Ritorna una Promise che si risolve alla chiusura del toast
    */
   async apriToast(options: ToastOptions) {
     if (!options.duration) {
       options.duration = 4000;
+    }
+    if (!options.position) {
+      options.position = 'bottom';
     }
     const t = await this.toastController.create(options);
     await t.present();
@@ -30,6 +35,7 @@ export class UtilsService {
   /**
    * 
    * @param options 
+   * @default options.buttons = [{ text: 'Ok' }]
    * @returns  Ritorna una Promise che si risolve alla chiusura dell'alert
    */
   async apriAlert(options: AlertOptions) {
@@ -65,11 +71,11 @@ export class UtilsService {
     return await m.onWillDismiss();
   }
 
-/**
- * Genera una stringa alfanumerica random 
- * @param length Lunghezza della stringa da generare
- * @returns Stringa casuale alfanumerica
- */
+  /**
+   * Genera una stringa alfanumerica random 
+   * @param length Lunghezza della stringa da generare
+   * @returns Stringa casuale alfanumerica
+   */
   getRandomString(length: number) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';

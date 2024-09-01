@@ -1,10 +1,25 @@
 <ion-toolbar>
+  <ion-buttons slot="start">
+    <ion-button (click)="annulla()" [disabled]="inSalvataggio">
+      <ion-icon name="close-outline" slot="icon-only"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
   <ion-title>
-    ToDo
+    {{toDoEditabile.id ? 'Dettagli' : 'Nuova'}} ToDo
   </ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button (click)="salva()" [disabled]="inSalvataggio">
+      Salva
+      <ion-spinner name="crescent" *></ion-spinner>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>
 
 
 <ion-content class="ion-padding">
-  {{toDo | json}}
+
+  <app-form-todo [toDo]="toDoEditabile"></app-form-todo>
+  {{toDoEditabile | json}}
 </ion-content>

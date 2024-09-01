@@ -22,6 +22,10 @@ export interface State {
      * Lista delle ToDo
      */
     todos: ToDo[];
+    /**
+     * Specifica se la lista delle todo è stata caricata
+     */
+    todosCaricate: boolean;
 }
 
 const statoIniziale: State = {
@@ -29,10 +33,11 @@ const statoIniziale: State = {
 
     stati: [
         { id: 1, descrizione: 'In attesa' },
-        { id: 1, descrizione: 'In progresso' },
-        { id: 1, descrizione: 'Completato' },
+        { id: 2, descrizione: 'In progresso' },
+        { id: 3, descrizione: 'Completato' },
     ],
     todos: [],
+    todosCaricate: false,
 };
 
 @Injectable({
@@ -85,6 +90,12 @@ export class Store {
         return this.store.pipe(map(s => s?.stati));
     }
 
+    getTodosCaricate() {
+        return this.store.pipe(map(s => s?.todosCaricate));
+    }
+    setTodosCaricate(value: boolean): void {
+        this.set('todosCaricate', value);
+    }
 
     getToDos() {
         return this.store.pipe(map(s => s?.todos));

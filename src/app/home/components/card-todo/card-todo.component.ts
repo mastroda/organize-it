@@ -3,6 +3,7 @@ import { lastValueFrom } from 'rxjs';
 import { DalService } from 'src/app/dal.service';
 import { ToDo } from 'src/app/models';
 import { UtilsService } from 'src/app/utils.service';
+import { ModalTodoComponent } from '../modal-todo/modal-todo.component';
 
 @Component({
   selector: 'app-card-todo',
@@ -20,6 +21,15 @@ export class CardTodoComponent implements OnInit {
 
   ngOnInit() { }
 
+
+  async apri() {
+    await this.utils.apriModal({
+      component: ModalTodoComponent,
+      componentProps: {
+        toDo: this.todo
+      }
+    });
+  }
 
   async salva() {
     this.todo.descrizione += ` [${this.utils.getRandomString(2)}]`;
