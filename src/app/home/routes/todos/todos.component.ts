@@ -12,6 +12,13 @@ import { ModalTodoComponent } from '../../components/modal-todo/modal-todo.compo
 })
 export class TodosComponent implements OnInit {
 
+  filtri: {} = {};
+
+
+  get stati$() {
+    return this.dal.statiToDo$;
+  }
+
   get todos$() {
     return this.dal.todos$;
   }

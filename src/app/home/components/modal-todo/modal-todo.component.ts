@@ -13,10 +13,9 @@ import { UtilsService } from 'src/app/utils.service';
 export class ModalTodoComponent implements OnInit {
 
   @Input() toDo!: ToDo;
-
   toDoEditabile!: ToDo;
 
-  inSalvataggio = false;
+  readonly = false;
 
   constructor(
     private modalController: ModalController,
@@ -36,9 +35,44 @@ export class ModalTodoComponent implements OnInit {
   }
 
   async salva() {
-    this.inSalvataggio = true;
+    this.readonly = true;
     const res = await lastValueFrom(this.dal.salvaToDo(this.toDo));
-    this.inSalvataggio = false;
+    this.readonly = false;
+
+    if (!res.isOk) {
+      await this.utils.apriAlert({
+        header: 'Errore',
+        subHeader: 'Salvataggio ToDo',
+        message: res.errore,
+      });
+      return;
+    }
+
+    await this.utils.apriToast({
+      message: 'ToDo salvata!',
+      color: 'success',
+    })
+  }
+
+
+  async elimina() {
+
+    const resAlert = await this.utils.apriAlert({
+      header: 'Conferma',
+      subHeader: 'Eliminazione ToDo',
+      message: 'Sicuro di voler eliminare questa ToDo?',
+      buttons: [
+        { text: 'Annulla', role: 'cancel' },
+        { text: 'Si, elimina', role: 'ok' }
+      ]
+    });
+    if (resAlert.role !== 'ok') {
+      return;
+    }
+
+    this.readonly = true;
+    const res = await lastValueFrom(this.dal.salvaToDo(this.toDo));
+    this.readonly = false;
 
     if (!res.isOk) {
       await this.utils.apriAlert({

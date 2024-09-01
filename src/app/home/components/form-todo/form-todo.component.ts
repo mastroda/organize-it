@@ -11,6 +11,7 @@ export class FormTodoComponent implements OnInit {
 
   @Input() toDo!: ToDo;
 
+  @Input() readonly = false;
 
   get stati$() {
     return this.dal.statiToDo$;
