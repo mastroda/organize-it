@@ -1,5 +1,5 @@
 @if (todo) {
-<ion-card [color]="todo.idStato | statoTodo : 'colore' | async" button (click)="apri()">
+<ion-card [color]="todo.idStato | statoTodo : 'colore' | async" [button]="button" (click)="clicked()">
 
   <ion-card-header>
 
@@ -8,7 +8,9 @@
         {{todo.idStato | statoTodo | async}}
       </ion-card-subtitle>
 
+      @if(button){
       <ion-icon class="icona-modifica" name="open-outline"></ion-icon>
+      }
     </div>
 
 
@@ -17,7 +19,16 @@
 
   <ion-card-content>
     {{todo.descrizione}}
-    <div class="ion-text-right" style="font-size: 12px;">
+
+    @for(campo of campiTesto; track campo) {
+    <app-campo-aggiuntivo [campo]="campo"></app-campo-aggiuntivo>
+    }
+    @for(campo of campiFlag; track campo) {
+    <app-campo-aggiuntivo [campo]="campo"></app-campo-aggiuntivo>
+    }
+
+
+    <div class="ion-text-right" style="font-size: 12px; margin-top: .4rem;">
       {{todo.dataCreazione | date : 'dd/MM/yy HH:mm:ss'}}
     </div>
   </ion-card-content>

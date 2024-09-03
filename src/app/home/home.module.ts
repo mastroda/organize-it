@@ -12,6 +12,8 @@ import { ModalTodoComponent } from './components/modal-todo/modal-todo.component
 import { FormTodoComponent } from './components/form-todo/form-todo.component';
 import { DashboardComponent } from './routes/dashboard/dashboard.component';
 import { AboutComponent } from './routes/about/about.component';
+import { FormCampoAggiuntivoComponent } from './components/form-campo-aggiuntivo/form-campo-aggiuntivo.component';
+import { CampoAggiuntivoComponent } from './components/campo-aggiuntivo/campo-aggiuntivo.component';
 
 
 @NgModule({
@@ -35,6 +37,8 @@ import { AboutComponent } from './routes/about/about.component';
     CardTodoComponent,
     ModalTodoComponent,
     FormTodoComponent,
+    FormCampoAggiuntivoComponent,
+    CampoAggiuntivoComponent,
 
     // pipes
     StatoTodoPipe,

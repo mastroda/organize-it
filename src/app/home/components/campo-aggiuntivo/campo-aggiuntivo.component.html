@@ -1,0 +1,19 @@
+@if(campo){
+@switch (campo.tipo) {
+
+@case ('flag') {
+<ion-chip [color]="campo.valore ? 'success' : 'danger'">
+  {{campo.descrizione}} <ion-icon [name]="(campo.valore ? 'checkmark' : 'close') + '-outline'"></ion-icon>
+</ion-chip>
+}
+
+@case ('testo') {
+<div>
+  {{campo.descrizione}}: {{campo.valore}}
+</div>
+}
+
+}
+}@else {
+<p>Campo non specificato</p>
+}

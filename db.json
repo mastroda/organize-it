@@ -4,7 +4,7 @@
       "id": "AABoFE",
       "descrizione": "descrizione",
       "idStato": 3,
-      "titolo": "titolo",
+      "titolo": "atitolo",
       "dataCreazione": "2024-09-01T20:34:53.984Z"
     },
     {
@@ -16,13 +16,13 @@
     },
     {
       "id": "DrhFRj",
-      "descrizione": "",
+      "descrizione": "aab",
       "idStato": 3,
       "titolo": "nuova",
       "dataCreazione": "2024-09-01T20:36:00.181Z"
     },
     {
-      "descrizione": "",
+      "descrizione": "baa",
       "id": "ZxpkZq",
       "idStato": 3,
       "titolo": "tittolo",
@@ -30,10 +30,26 @@
     },
     {
       "id": "yWGIYq",
-      "descrizione": "",
+      "descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       "idStato": 1,
-      "titolo": "todo",
-      "dataCreazione": "2024-09-01T21:33:16.221Z"
+      "titolo": "todo cliccata",
+      "dataCreazione": "2024-09-01T21:33:16.221Z",
+      "campiAggiuntivi": [
+        {
+          "tipo": "flag",
+          "descrizione": "love",
+          "valore": true
+        },
+        {
+          "tipo": "testo",
+          "descrizione": "other love",
+          "valore": "yess😊"
+        },
+        {
+          "tipo": "flag",
+          "descrizione": "hate"
+        }
+      ]
     }
   ]
 }

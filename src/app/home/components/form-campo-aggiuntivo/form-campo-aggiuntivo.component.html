@@ -1,0 +1,38 @@
+@if(campo){
+
+<ion-grid>
+  <ion-row class="ion-align-items-center ">
+    <ion-col size="12" sizeSm>
+      <ion-input fill="outline" [(ngModel)]="campo.descrizione" label="Descrizione info aggiuntiva"
+        [disabled]="readonly" labelPlacement="floating"></ion-input>
+    </ion-col>
+
+    @switch (campo.tipo) {
+
+    @case ('flag') {
+    <ion-col size="auto">
+      <ion-checkbox [disabled]="readonly" [(ngModel)]="campo.valore">Valore</ion-checkbox>
+    </ion-col>
+    }
+
+    @case ('testo') {
+    <ion-col>
+      <ion-input [disabled]="readonly" fill="outline" [(ngModel)]="campo.valore" label="Valore"
+        labelPlacement="floating"></ion-input>
+    </ion-col>
+    }
+
+    }
+
+    <ion-col size="auto">
+      <ion-button class="ion-no-margin" size="small" fill="clear" color="danger" (click)="rimuovi()"
+        [disabled]="readonly">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+} @else {
+<p>Campo non specificato</p>
+}

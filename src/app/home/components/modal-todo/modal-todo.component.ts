@@ -5,6 +5,11 @@ import { DalService } from 'src/app/dal.service';
 import { ToDo } from 'src/app/models';
 import { UtilsService } from 'src/app/utils.service';
 
+/**
+ * Modal per la gestione (visualizzazione, salvataggio ed eliminazione) di una ToDo
+ * 
+ * @param toDo: ToDo
+ */
 @Component({
   selector: 'app-modal-todo',
   templateUrl: './modal-todo.component.html',
@@ -13,6 +18,7 @@ import { UtilsService } from 'src/app/utils.service';
 export class ModalTodoComponent implements OnInit {
 
   @Input() toDo!: ToDo;
+
   toDoEditabile!: ToDo;
 
   readonly = false;

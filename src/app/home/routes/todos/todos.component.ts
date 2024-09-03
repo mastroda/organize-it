@@ -6,7 +6,9 @@ import { UtilsService } from 'src/app/utils.service';
 import { ModalTodoComponent } from '../../components/modal-todo/modal-todo.component';
 import { fadeAnimation } from 'src/app/animations';
 
-
+/**
+ * Subroute per la visualizzazione e gestione delle ToDo
+ */
 
 @Component({
   selector: 'app-todos',
@@ -98,6 +100,8 @@ export class TodosComponent implements OnInit {
       idStato: 1,
       titolo: '',
       dataCreazione: new Date(),
+
+      campiAggiuntivi: [],
     };
 
     await this.utils.apriModal({
@@ -107,4 +111,17 @@ export class TodosComponent implements OnInit {
       }
     });
   }
+
+
+
+  async apri(toDo: ToDo) {
+    await this.utils.apriModal({
+      component: ModalTodoComponent,
+      componentProps: {
+        toDo
+      }
+    });
+  }
+
+
 }

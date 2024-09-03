@@ -60,10 +60,10 @@
   <ion-grid>
     <ion-row>
       @for(item of stati; track item.id) {
-      <ion-col size="12" sizeMd="auto">
+      <ion-col size="12" sizeMd="4" sizeXl="3">
 
 
-        <div class="ion-padding" style="min-width: 20rem;">
+        <div class="ion-padding-vertical" style="min-width: 20rem;">
           <h3 class="ion-no-margin">{{item.descrizione}}</h3>
         </div>
 
@@ -83,13 +83,17 @@
         </div>
         }
         } @else {
-        @for(todo of item.todos; track todo.id) {
-        <app-card-todo [todo]="todo" @fadeAnimation></app-card-todo>
-        } @empty {
-        <div class="ion-padding" @fadeAnimation>
-          Ancora nessuna todo.
+        <div class="todo-container">
+          @for(todo of item.todos; track todo.id) {
+          <app-card-todo [todo]="todo" @fadeAnimation [button]="true" (eClick)="apri($event)"></app-card-todo>
+          } @empty {
+          <div @fadeAnimation>
+            <p>Ancora nessuna 😔</p>
+          </div>
+
+          }
         </div>
-        }}
+        }
       </ion-col>
       }
     </ion-row>
