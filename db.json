@@ -2,54 +2,67 @@
   "todos": [
     {
       "id": "AABoFE",
-      "descrizione": "descrizione",
+      "descrizione": "Esplora le best practice per creare interfacce accessibili. Scopri come rendere il tuo design inclusivo e navigabile per tutti gli utenti.",
       "idStato": 3,
-      "titolo": "atitolo",
-      "dataCreazione": "2024-09-01T20:34:53.984Z"
+      "titolo": "Seminario Accessibilità Web",
+      "dataCreazione": "2024-09-01T20:34:53.984Z",
+      "campiAggiuntivi": []
     },
     {
       "id": "kYiMI8",
-      "descrizione": "",
-      "idStato": 3,
-      "titolo": "titolo",
+      "descrizione": "Metti alla prova le tue idee con prototipi interattivi. Utilizza strumenti come Figma e Adobe XD per testare e validare il tuo design.",
+      "idStato": 1,
+      "titolo": "Laboratorio di Prototipazione",
       "dataCreazione": "2024-09-01T20:35:26.083Z"
     },
     {
       "id": "DrhFRj",
-      "descrizione": "aab",
-      "idStato": 3,
-      "titolo": "nuova",
+      "descrizione": "Impara a condurre test di usabilità e analisi delle interazioni. Ottieni feedback prezioso per migliorare l'esperienza utente dei tuoi progetti.\n",
+      "idStato": 2,
+      "titolo": "Analisi dell'Esperienza Utente",
       "dataCreazione": "2024-09-01T20:36:00.181Z"
     },
     {
-      "descrizione": "baa",
+      "descrizione": "Approfondisci i principi del design visivo. Impara a scegliere colori, tipografie e layout per creare interfacce esteticamente piacevoli e funzionali.\n",
       "id": "ZxpkZq",
       "idStato": 3,
-      "titolo": "tittolo",
+      "titolo": "Corso di Design Visivo",
       "dataCreazione": "2024-09-01T21:08:03.128Z"
     },
     {
       "id": "yWGIYq",
-      "descrizione": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "descrizione": "Scopri come applicare il design thinking per risolvere problemi complessi. Attraverso esercizi pratici, costruisci soluzioni innovative e centrali nell'utente.",
       "idStato": 1,
-      "titolo": "todo cliccata",
+      "titolo": "Workshop Design Thinking",
       "dataCreazione": "2024-09-01T21:33:16.221Z",
       "campiAggiuntivi": [
         {
           "tipo": "flag",
-          "descrizione": "love",
+          "descrizione": "Inviare email ai partecipanti",
           "valore": true
         },
         {
           "tipo": "testo",
-          "descrizione": "other love",
-          "valore": "yess😊"
-        },
-        {
-          "tipo": "flag",
-          "descrizione": "hate"
+          "descrizione": "Email coordinatore",
+          "valore": "coordinatore@email.it"
         }
       ]
+    },
+    {
+      "descrizione": "Impara a creare wireframe efficaci per il tuo prodotto digitale. Approfondisci strumenti e tecniche per delineare l'architettura delle informazioni.",
+      "id": "YhDOn7",
+      "idStato": 2,
+      "titolo": "Corso di Wireframing",
+      "dataCreazione": "2024-09-03T20:17:20.472Z",
+      "campiAggiuntivi": []
+    },
+    {
+      "id": "RyxZ1t",
+      "descrizione": "Partecipa a sessioni di mentoring con esperti del settore. Ricevi consigli pratici e feedback sui tuoi progetti per avanzare nella tua carriera nel design UX.\n",
+      "idStato": 3,
+      "titolo": "Mentoring per Designer UX",
+      "dataCreazione": "2024-09-03T20:41:34.948Z",
+      "campiAggiuntivi": []
     }
   ]
 }
