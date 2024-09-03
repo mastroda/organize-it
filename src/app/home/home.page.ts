@@ -19,7 +19,6 @@ export class HomePage implements OnInit {
   menuItems: MenuItem[] = [
     { label: 'Lista ToDo', icon: 'albums', link: 'todos' },
     { label: 'Dashboard', icon: 'analytics', link: 'dashboard' },
-    { label: 'About', icon: 'help-circle', link: 'about' },
   ];
 
 
@@ -29,6 +28,7 @@ export class HomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.avvio();
   }
 

@@ -3,7 +3,13 @@
 
     <ion-content class="ion-padding">
       <div class="ion-padding">
-        <ion-img src="assets/icon/logo.png" class="logo"></ion-img>
+        <ion-img src="assets/icon/logo.png" class="logo" style="height: 14rem;"></ion-img>
+      </div>
+
+      <div class="ion-padding">
+        <h1>
+          OrganizeIt
+        </h1>
       </div>
 
       <div class="ion-padding">
@@ -15,6 +21,13 @@
           <ion-icon [name]="item.icon+'-outline'" slot="start"></ion-icon>
         </ion-item>
         }
+
+        <ion-item class="menu-item" button (click)="mod.isOpen = true; menu.close()">
+          <ion-label>
+            About
+          </ion-label>
+          <ion-icon [name]="'information-circle-outline'" slot="start"></ion-icon>
+        </ion-item>
       </div>
     </ion-content>
 
@@ -23,3 +36,32 @@
   <ion-router-outlet id="main"></ion-router-outlet>
 
 </ion-split-pane>
+
+
+<ion-modal #mod style="--height: 16rem;">
+  <ng-template>
+    <ion-content class="ion-padding">
+
+      <div>
+        <p style="font-size: 12px; letter-spacing: 1px;" class="ion-text-uppercase">
+          Stefano Mastrodascio
+        </p>
+
+        <h1>
+          OrganizeIt
+        </h1>
+
+        <p>
+          Benvenuto nella mia test app per la gestione delle ToDo.
+        </p>
+      </div>
+
+      <div class="flex ion-justify-content-center" style="margin-top: 4rem;">
+        <ion-button (click)="mod.dismiss(); mod.isOpen = false;">
+          Chiudi
+        </ion-button>
+      </div>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
