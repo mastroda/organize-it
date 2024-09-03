@@ -20,6 +20,10 @@
   <ion-card-content>
     {{todo.descrizione}}
 
+    @if(todo.campiAggiuntivi && todo.campiAggiuntivi.length > 0){
+      <p style="font-weight: 600; margin-top: .4rem;">Informazioni aggiuntive</p>
+    }
+
     @for(campo of campiTesto; track campo) {
     <app-campo-aggiuntivo [campo]="campo"></app-campo-aggiuntivo>
     }
