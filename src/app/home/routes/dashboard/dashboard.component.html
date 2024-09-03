@@ -8,5 +8,45 @@
 </ion-toolbar>
 
 <ion-content class="ion-padding">
-  Dashboard
+
+  <h3>Informazioni per stato</h3>
+
+  <div class="flex ion-wrap">
+
+    @for(item of todosXstato$ | async; track item.id) {
+
+    <ion-card [color]="item.colore" style="max-width: 24rem;">
+
+      <ion-card-header>
+        <ion-card-title>{{item.descrizione}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        @if (isLoading$ | async){
+
+        <ion-skeleton-text [animated]="true" style="height: 1.75rem; width: 3rem;"></ion-skeleton-text>
+
+        } @else {
+        <p>
+          Ci sono <strong>{{item.quantita}}</strong> ToDo in questo stato, che equivale a
+          <strong>{{item.percentuale | number : '1.2-2'}}</strong>%
+        </p>
+
+        @if(item.ultimaData){
+        <p>
+          L'ultima ToDo creata risale a <strong>{{item.ultimaData | date : 'EEEE d MMMM yyyy'}}</strong>
+          alle ore <strong>{{item.ultimaData | date : 'H:mm'}}</strong>
+        </p>
+        }
+        }
+
+      </ion-card-content>
+    </ion-card>
+
+    }
+
+  </div>
+
+
 </ion-content>
