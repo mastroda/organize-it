@@ -7,25 +7,78 @@
 
 <ion-content class="ion-padding">
 
-  <div class="flex ion-justify-content-end">
-    <ion-button (click)="aggiungi()">Nuova</ion-button>
+  <div class="ion-padding">
+    <ion-button (click)="aggiungi()" size="small">Nuova</ion-button>
   </div>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+
+      <ion-col size="12">
+        <h3 class="ion-no-margin">Filtri</h3>
+      </ion-col>
+
+      <ion-col size="12" sizeSm="auto">
+        <ion-input label="Cerca:" fill="outline" style="max-width: 24rem;" [(ngModel)]="ricerca"></ion-input>
+      </ion-col>
+
+      <ion-col size="12" sizeSm="auto">
+        <ion-select label="Stato:" fill="outline" style="max-width: 24rem;" [(ngModel)]="idStato" interface="popover">
+          <ion-select-option [value]="0">Tutti</ion-select-option>
+          @for(item of stati$ | async; track item.id){
+          <ion-select-option [value]="item.id">{{item.descrizione}}</ion-select-option>
+          }
+        </ion-select>
+      </ion-col>
+
+      <ion-col size="12" sizeSm="auto">
+
+        <ion-chip id="todos_ordinamento">
+          Ordina per: <span class="ion-text-capitalize">{{ordinamentoSelezionato}}</span>
+          <ion-icon name="filter-outline"></ion-icon>
+        </ion-chip>
+
+        <ion-popover trigger="todos_ordinamento" triggerAction="click" #mod [showBackdrop]="false">
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                @for(item of ordinamenti; track item){
+                <ion-item button lines="full" (click)="ordinamentoSelezionato = item; mod.dismiss()">
+                  <ion-label class="ion-text-capitalize">{{item}}</ion-label>
+                </ion-item>
+                }
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 
   @if(todosByStato$ | async; as stati){
   <ion-grid>
     <ion-row>
       @for(item of stati; track item.id) {
-      <ion-col>
-        <div class="ion-padding">
+      <ion-col size="12" sizeMd="auto">
+
+
+        <div class="ion-padding" style="min-width: 20rem;">
           <h3 class="ion-no-margin">{{item.descrizione}}</h3>
         </div>
 
 
 
         @if (isLoading$ | async){
-        @for(x of [].constructor(4); track x) {
+        @for(x of [].constructor(6); track $index) {
         <div style="margin: 10px;" @fadeAnimation>
-          <ion-skeleton-text [style.height]="(item.id+$index)%2 === 0 ? '8rem' : '10rem'"
+
+          <!--
+           (item.id+$index)%2 === 0 ? '8rem' : '10rem' 
+           imposta l'altezza in base all'indice dell'array così gli skeleton
+           non sono tutti uguali
+            -->
+          <ion-skeleton-text class="shadow" [style.height]="(item.id+$index)%2 === 0 ? '8rem' : '6rem'"
             [animated]="true"></ion-skeleton-text>
         </div>
         }
@@ -34,7 +87,7 @@
         <app-card-todo [todo]="todo" @fadeAnimation></app-card-todo>
         } @empty {
         <div class="ion-padding" @fadeAnimation>
-          Lista vuota
+          Ancora nessuna todo.
         </div>
         }}
       </ion-col>

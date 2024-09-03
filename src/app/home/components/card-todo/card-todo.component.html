@@ -14,11 +14,14 @@
 
     <ion-card-title>{{todo.titolo}}</ion-card-title>
   </ion-card-header>
-  @if(todo.descrizione){
+
   <ion-card-content>
     {{todo.descrizione}}
+    <div class="ion-text-right" style="font-size: 12px;">
+      {{todo.dataCreazione | date : 'dd/MM/yy HH:mm:ss'}}
+    </div>
   </ion-card-content>
-  }
+
 </ion-card>
 } @else {
 <ion-card>

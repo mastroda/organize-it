@@ -43,6 +43,7 @@
 
 ion-button {
     text-transform: none;
+    font-weight: 400;
 }
 
 @media only screen and (min-width: 768px) {
@@ -55,10 +56,29 @@ ion-button {
 
 ion-card {
     border-radius: 1rem;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 0px 6px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 0px 6px 0 rgba(0, 0, 0, 0.12);
+
+    & ion-card-subtitle {
+        font-weight: 400;
+    }
+
+    & ion-card-title {
+        font-weight: 600;
+    }
 }
 
 
 ion-spinner.button-loading {
     height: 1rem;
     margin-left: .2rem;
+}
+
+ion-skeleton-text.shadow {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 0px 6px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 0px 6px 0 rgba(0, 0, 0, 0.12);
 }
