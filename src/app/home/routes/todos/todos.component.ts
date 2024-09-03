@@ -92,33 +92,25 @@ export class TodosComponent implements OnInit {
   ngOnInit() { }
 
 
+  /**
+   * Apre il modal ToDo per l'inserimento di un nuovo record o per vederne il dettaglio
+   */
+  async apri(toDo: ToDo | undefined) {
+    if (!toDo) {
+      toDo = {
+        descrizione: '',
+        id: '',
+        idStato: 1,
+        titolo: '',
+        dataCreazione: new Date(),
 
-  async aggiungi() {
-    const nuova: ToDo = {
-      descrizione: '',
-      id: '',
-      idStato: 1,
-      titolo: '',
-      dataCreazione: new Date(),
-
-      campiAggiuntivi: [],
-    };
-
+        campiAggiuntivi: [],
+      };
+    }
     await this.utils.apriModal({
       component: ModalTodoComponent,
       componentProps: {
-        toDo: nuova
-      }
-    });
-  }
-
-
-
-  async apri(toDo: ToDo) {
-    await this.utils.apriModal({
-      component: ModalTodoComponent,
-      componentProps: {
-        toDo
+        toDo: toDo
       }
     });
   }

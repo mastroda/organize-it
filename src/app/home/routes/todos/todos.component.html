@@ -8,7 +8,7 @@
 <ion-content class="ion-padding">
 
   <div class="ion-padding">
-    <ion-button (click)="aggiungi()" size="small">Nuova</ion-button>
+    <ion-button (click)="apri(undefined)" size="small">Nuova</ion-button>
   </div>
 
   <ion-grid>
@@ -73,13 +73,7 @@
         @for(x of [].constructor(6); track $index) {
         <div style="margin: 10px;" @fadeAnimation>
 
-          <!--
-           (item.id+$index)%2 === 0 ? '8rem' : '10rem' 
-           imposta l'altezza in base all'indice dell'array così gli skeleton
-           non sono tutti uguali
-            -->
-          <ion-skeleton-text class="shadow" [style.height]="(item.id+$index)%2 === 0 ? '8rem' : '6rem'"
-            [animated]="true"></ion-skeleton-text>
+          <ion-skeleton-text class="shadow" [animated]="true"></ion-skeleton-text>
         </div>
         }
         } @else {

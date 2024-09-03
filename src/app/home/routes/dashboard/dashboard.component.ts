@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DalService } from 'src/app/dal.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent  implements OnInit {
 
-  constructor() { }
+
+  get todos$() {
+    return this.dal ;
+  }
+
+  constructor(
+    private dal: DalService
+  ) { }
 
   ngOnInit() {}
 
