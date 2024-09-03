@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom, map, merge, mergeMap } from 'rxjs';
 import { DalService } from 'src/app/dal.service';
-import { ToDo } from 'src/app/models';
+import { StatoToDo, ToDo } from 'src/app/models';
 import { UtilsService } from 'src/app/utils.service';
 import { ModalTodoComponent } from '../../components/modal-todo/modal-todo.component';
 import { fadeAnimation } from 'src/app/animations';
@@ -25,10 +25,17 @@ export class TodosComponent implements OnInit {
 
   ordinamentoSelezionato: string = 'creazione';
 
+  /** 
+   * lista degli stati todo
+  */
   get stati$() {
     return this.dal.statiToDo$;
   }
 
+
+  /**
+   * lista delle todo filtrate per `ricerca` e ordinate per `ordinamentoSelezionato`
+  */
   get todos$() {
     return this.dal.todos$.pipe(map(
       todos => {
@@ -57,6 +64,9 @@ export class TodosComponent implements OnInit {
     return this.dal.isLoadingTodos$;
   }
 
+  /**
+   * lista degli stati filtrati in base a `idStato` con aggiunta della lista delle todo con il relativo stato
+  */
   get todosByStato$() {
     return this.dal.statiToDo$.pipe(
       map(stati => {
@@ -116,4 +126,20 @@ export class TodosComponent implements OnInit {
   }
 
 
+  /**
+   * Apre il modal ToDo per l'inserimento di un nuovo record con lo stato già impostato
+   */
+  nuovaDaStato(stato: StatoToDo) {
+    const nuova: ToDo = {
+      descrizione: '',
+      id: '',
+      idStato: stato.id,
+      titolo: '',
+      dataCreazione: new Date(),
+
+      campiAggiuntivi: [],
+    };
+
+    this.apri(nuova);
+  }
 }

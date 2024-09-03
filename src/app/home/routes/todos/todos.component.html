@@ -63,8 +63,13 @@
       <ion-col size="12" sizeMd="4" sizeXl="3">
 
 
-        <div class="ion-padding-vertical" style="min-width: 20rem;">
+        <div class="ion-padding-vertical flex ion-justify-content-between ion-align-items-center"
+          style="min-width: 20rem;">
           <h3 class="ion-no-margin">{{item.descrizione}}</h3>
+
+          <ion-button class="ion-no-margin" fill="clear" size="small" (click)="nuovaDaStato(item)">
+            <ion-icon name="add-outline" slot="icon-only"></ion-icon>
+          </ion-button>
         </div>
 
 
