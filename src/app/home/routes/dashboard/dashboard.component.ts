@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { map, mergeMap } from 'rxjs';
+import { fadeAnimation } from 'src/app/animations';
 import { DalService } from 'src/app/dal.service';
 
 /**
@@ -10,6 +11,7 @@ import { DalService } from 'src/app/dal.service';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  animations: [fadeAnimation]
 })
 export class DashboardComponent implements OnInit {
 
