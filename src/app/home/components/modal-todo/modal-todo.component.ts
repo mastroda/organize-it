@@ -33,7 +33,7 @@ export class ModalTodoComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Clono l'oggetto altrimenti le mofiche sarebbero propagate in tutta l'interfaccia se toDo proviene da un Observable
+    // Clono l'oggetto altrimenti le modifiche sarebbero propagate in tutta l'interfaccia se toDo proviene da un Observable
     this.toDoEditabile = JSON.parse(JSON.stringify(this.toDo));
   }
 
